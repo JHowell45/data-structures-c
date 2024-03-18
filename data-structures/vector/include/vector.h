@@ -27,4 +27,6 @@ void vector_delete(vector *v, size_t index);
 
 void vector_destroy(vector *v);
 
+void vector_print(vector *v);
+
 #endif

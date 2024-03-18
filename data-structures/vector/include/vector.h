@@ -13,7 +13,7 @@ typedef struct vector_s {
 
 void vector_init(vector *v, size_t capacity);
 
-void new_vec(size_t capacity);
+vector * new_vec(size_t capacity);
 
 void vector_push(vector *v, int data);
 

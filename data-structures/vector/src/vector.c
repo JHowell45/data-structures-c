@@ -32,7 +32,10 @@ int vector_get(vector* v, size_t index) {
 }
 
 void vector_insert(vector *v, size_t index, int data) {
-
+    if (v->size >= v->capacity) {
+        v->capacity *= 2;
+    }
+    int *temp = malloc(sizeof(int) * v->capacity);
 }
 
 void vector_delete(vector *v, size_t index) {

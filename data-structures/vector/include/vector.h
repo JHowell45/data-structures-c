@@ -3,9 +3,7 @@
 
 #include <stddef.h>
 
-typedef struct vector_s vector;
-
-typedef struct vector_s {
+typedef struct {
     size_t capacity;
     size_t size;
     int *arr;

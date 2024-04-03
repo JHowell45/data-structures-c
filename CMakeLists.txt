@@ -9,19 +9,15 @@ project(data-structures VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
 set(INCLUDE ${ROOT_DIR}/include)
 set(SRC ${ROOT_DIR}/src)
+set(EXAMPLES ${ROOT_DIR}/examples)
 set(VECTOR_LIBRARY vector_library)
 set(VECTOR_EXAMPLE vector)
-
-# add_subdirectory(${ROOT_DIR}/hashtable)
-# add_subdirectory(${ROOT_DIR}/lists)
-# add_subdirectory(${ROOT_DIR}/trees)
-# add_subdirectory(${ROOT_DIR}/vector)
 
 ################################################
 # Build the Libraries:
 ################################################
 
-include_directories(INCLUDE)
+include_directories(${INCLUDE})
 
 add_library(${VECTOR_LIBRARY} SHARED ${SRC}/vector.c)
 set_target_properties(${VECTOR_LIBRARY} PROPERTIES
@@ -34,5 +30,5 @@ set_target_properties(${VECTOR_LIBRARY} PROPERTIES
 # Build the Executables:
 ################################################
 
-add_executable(${VECTOR_EXAMPLE} ${SRC}/vector.c)
+add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
 target_link_libraries(${VECTOR_EXAMPLE} ${VECTOR_LIBRARY})

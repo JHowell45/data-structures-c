@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "vector.h"
+#include "../include/vector.h"
 
 void vector_init(vector *v, size_t capacity) {
     v->capacity = capacity;
@@ -29,6 +29,15 @@ void vector_pop(vector *v) {
 
 int vector_get(vector* v, size_t index) {
     return v->arr[index];
+}
+
+int vector_index_of(vector *v, int searchValue) {
+    for (int i = 0; i < v->size; i++) {
+        if (v->arr[i] == searchValue) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 void vector_insert(vector *v, size_t index, int data) {

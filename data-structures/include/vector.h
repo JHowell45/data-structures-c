@@ -19,6 +19,8 @@ void vector_pop(vector *v);
 
 int vector_get(vector* v, size_t index);
 
+int vector_index_of(vector *v, int searchValue);
+
 void vector_insert(vector *v, size_t index, int data);
 
 void vector_delete(vector *v, size_t index);

@@ -1,5 +1,5 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef _VECTOR_H
+#define _VECTOR_H
 
 #include <stddef.h>
 
@@ -9,24 +9,12 @@ typedef struct {
     int *arr;
 } vector;
 
-void vector_init(vector *v, size_t capacity);
+vector * newVector(void);
 
-vector * new_vec(size_t capacity);
+void freeVector(vector *vector);
 
-void vector_push(vector *v, int data);
+void pushVector(vector *vector, int value);
 
-void vector_pop(vector *v);
-
-int vector_get(vector* v, size_t index);
-
-int vector_index_of(vector *v, int searchValue);
-
-void vector_insert(vector *v, size_t index, int data);
-
-void vector_delete(vector *v, size_t index);
-
-void vector_destroy(vector *v);
-
-void vector_print(vector *v);
+void printVector(vector *vector);
 
 #endif

@@ -6,7 +6,7 @@
 typedef struct {
     size_t capacity;
     size_t size;
-    int *arr;
+    int *items;
 } vector;
 
 vector * newVector(void);

@@ -20,6 +20,8 @@ void popSingleLinkedList(LinkedList *ll);
 
 void removeSingleLinkedList(LinkedList *ll, size_t index);
 
+LinkedList * getNodeSingleLinkedList(LinkedList *ll, int searchValue);
+
 void printSingleLinkedList(LinkedList *ll);
 
 #endif

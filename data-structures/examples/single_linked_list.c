@@ -16,10 +16,16 @@ int main(void) {
     removeSingleLinkedList(root, 5);
     printSingleLinkedList(root);
 
-    size_t superLargeValue = 1000000;
-    for (int i = 0; i < superLargeValue; i++) {
-        insertSingleLinkedList(root, i, 6);
-        printf("Current Iter: %d\n", i);
+    size_t superLargeValue = 1000;
+    for (int i = 0; i <= superLargeValue; i++) {
+        insertSingleLinkedList(root, 2*i, 6);
+    }
+
+    LinkedList *search = getNodeSingleLinkedList(root, 10);
+    if (search == NULL) {
+        printf("NOT FOUND\n");
+    } else {
+        printSingleLinkedList(search);
     }
 
     freeSingleLinkedList(root);

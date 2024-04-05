@@ -61,3 +61,14 @@ void printSingleLinkedList(LinkedList *ll) {
         printf("\n");
     }
 }
+
+LinkedList * getNodeSingleLinkedList(LinkedList *ll, int searchValue) {
+    LinkedList *temp = ll;
+    while (temp != NULL) {
+        if (temp->data == searchValue) {
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return NULL;
+}

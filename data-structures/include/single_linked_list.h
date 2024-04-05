@@ -1,18 +1,25 @@
 #ifndef _SINGLE_LINKED_LIST_H
 #define _SINGLE_LINKED_LIST_H
 
+#include <stddef.h>
 
 typedef struct LinkedList {
     int data;
     struct LinkedList *next;
 } LinkedList;
 
-LinkedList * newSingleLL(int data);
+LinkedList * newSingleLinkedList(int data);
 
-void freeSingleLL(LinkedList *ll);
+void freeSingleLinkedList(LinkedList *ll);
 
-void pushSingleLL(LinkedList *ll, int data);
+void pushSingleLinkedList(LinkedList *ll, int data);
 
-void printSingleLL(LinkedList *ll);
+void insertSingleLinkedList(LinkedList *ll, int data, size_t index);
+
+void popSingleLinkedList(LinkedList *ll);
+
+void removeSingleLinkedList(LinkedList *ll, size_t index);
+
+void printSingleLinkedList(LinkedList *ll);
 
 #endif

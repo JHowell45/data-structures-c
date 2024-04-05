@@ -59,6 +59,10 @@ int indexOfVector(vector *vector, int search) {
     return -1;
 }
 
+bool isEmptyVector(vector *vector) {
+    return vector->size == 0;
+}
+
 void printVector(vector *vector) {
     printf("[");
     for (int i = 0; i < vector->size; i++) {

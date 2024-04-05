@@ -15,6 +15,10 @@ int main(void) {
         popVector(v);
         printVerboseVector(v);
     }
+    for (int i = 0; i < 5; i++) {
+        removeVector(v, 0);
+        printVerboseVector(v);
+    }
     printVerboseVector(v);
     freeVector(v);
     return 0;

@@ -43,6 +43,13 @@ void popVector(vector *vector) {
     vector->size--;
 }
 
+void removeVector(vector *vector, size_t index) {
+    for (int i = index+1; i < vector->size; i++) {
+        vector->items[i-1] = vector->items[i];
+    }
+    vector->size--;
+}
+
 int indexOfVector(vector *vector, int search) {
     for (int i = 0; i < vector->size; i++) {
         if (vector->items[i] == search) {

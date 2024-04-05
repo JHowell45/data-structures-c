@@ -1,6 +1,7 @@
 #ifndef _VECTOR_H
 #define _VECTOR_H
 
+#include <stdbool.h>
 #include <stddef.h>
 
 typedef struct {
@@ -15,6 +16,18 @@ void freeVector(vector *vector);
 
 void pushVector(vector *vector, int value);
 
+void insertVector(vector *vector, int value, size_t index);
+
+void popVector(vector *vector);
+
+void removeVector(vector *vector, size_t index);
+
+int indexOfVector(vector *vector, int search);
+
+bool isEmptyVector(vector *vector);
+
 void printVector(vector *vector);
+
+void printVerboseVector(vector *vector);
 
 #endif

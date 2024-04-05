@@ -10,8 +10,8 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
 set(INCLUDE ${ROOT_DIR}/include)
 set(SRC ${ROOT_DIR}/src)
 set(EXAMPLES ${ROOT_DIR}/examples)
-set(VECTOR_LIBRARY vector_library)
-set(VECTOR_EXAMPLE vector)
+set(VECTOR_LIBRARY vector)
+set(VECTOR_EXAMPLE vector_example)
 
 ################################################
 # Build the Libraries:

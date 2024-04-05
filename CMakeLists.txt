@@ -10,10 +10,15 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
 set(INCLUDE ${ROOT_DIR}/include)
 set(SRC ${ROOT_DIR}/src)
 set(EXAMPLES ${ROOT_DIR}/examples)
+
 set(VECTOR_LIBRARY vector)
 set(VECTOR_EXAMPLE vector_example)
-set(LINKED_LIST_LIBRARY linked_list)
-set(LINKED_LIST_EXAMPLE linked_list_example)
+
+set(LINKED_LIST_LIBRARY lists)
+set(LINKED_LIST_EXAMPLE lists_example)
+
+set(TREE_LIBRARY trees)
+set(TREE_EXAMPLE trees_example)
 
 ################################################
 # Build the Libraries:
@@ -37,6 +42,16 @@ set_target_properties(${LINKED_LIST_LIBRARY} PROPERTIES
     PUBLIC_HEADER ${INCLUDE}/single_linked_list.h
 )
 
+add_library(${TREE_LIBRARY} SHARED 
+    ${SRC}/binary_tree.c
+    ${SRC}/vector.c
+)
+set_target_properties(${TREE_LIBRARY} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+    PUBLIC_HEADER ${INCLUDE}/binary_tree.h
+)
+
 ################################################
 # Build the Executables:
 ################################################
@@ -46,3 +61,9 @@ target_link_libraries(${VECTOR_EXAMPLE} ${VECTOR_LIBRARY})
 
 add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
 target_link_libraries(${LINKED_LIST_EXAMPLE} ${LINKED_LIST_LIBRARY})
+
+add_executable(${TREE_EXAMPLE} ${EXAMPLES}/binary_tree.c)
+target_link_libraries(${TREE_EXAMPLE} 
+    ${VECTOR_LIBRARY}
+    ${TREE_LIBRARY}
+)

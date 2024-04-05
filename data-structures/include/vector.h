@@ -22,6 +22,8 @@ void popVector(vector *vector);
 
 void removeVector(vector *vector, size_t index);
 
+void clearVector(vector *vector);
+
 int indexOfVector(vector *vector, int search);
 
 bool isEmptyVector(vector *vector);
@@ -29,5 +31,11 @@ bool isEmptyVector(vector *vector);
 void printVector(vector *vector);
 
 void printVerboseVector(vector *vector);
+
+void selectionSortVector(vector *vector, bool desc);
+
+void bubbleSortVector(vector *vector, bool desc);
+
+void insertionSortVector(vector *vector, bool desc);
 
 #endif

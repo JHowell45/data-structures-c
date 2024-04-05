@@ -17,6 +17,41 @@ void freeVector(vector *vector) {
     free(vector);
 }
 
+void increaseInternalArraySizeCheck(vector *vector) {
+    if (vector->size > vector->capacity) {
+        vector->capacity *= 2;
+        vector->items = realloc(vector->items, sizeof(int) * vector->capacity);
+    }
+}
+
+void pushVector(vector *vector, int value) {
+    vector->size++;
+    increaseInternalArraySizeCheck(vector);
+    vector->items[vector->size - 1] = value;
+}
+
+void insertVector(vector *vector, int value, size_t index) {
+    vector->size++;
+    increaseInternalArraySizeCheck(vector);
+    for (int i = vector->size-1; i >= index; i--) {
+        vector->items[i+1] = vector->items[i];
+    }
+    vector->items[index] = value;
+}
+
+void popVector(vector *vector) {
+    vector->size--;
+}
+
+int indexOfVector(vector *vector, int search) {
+    for (int i = 0; i < vector->size; i++) {
+        if (vector->items[i] == search) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void printVector(vector *vector) {
     printf("[");
     for (int i = 0; i < vector->size; i++) {
@@ -28,4 +63,13 @@ void printVector(vector *vector) {
         }
     }
     printf("]\n");
+}
+
+void printVerboseVector(vector *vector) {
+    printf("Vector {\n");
+    printf("\tCount: %zu\n", vector->size);
+    printf("\tCapacity: %zu\n", vector->capacity);
+    printf("\tItems: ");
+    printVector(vector);
+    printf("}\n");
 }

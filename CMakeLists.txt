@@ -11,13 +11,10 @@ set(INCLUDE ${ROOT_DIR}/include)
 set(SRC ${ROOT_DIR}/src)
 set(EXAMPLES ${ROOT_DIR}/examples)
 
-set(VECTOR_LIBRARY vector)
+set(LIBRARY jacob-algos)
+
 set(VECTOR_EXAMPLE vector_example)
-
-set(LINKED_LIST_LIBRARY lists)
 set(LINKED_LIST_EXAMPLE lists_example)
-
-set(TREE_LIBRARY trees)
 set(TREE_EXAMPLE trees_example)
 
 ################################################
@@ -26,30 +23,14 @@ set(TREE_EXAMPLE trees_example)
 
 include_directories(${INCLUDE})
 
-add_library(${VECTOR_LIBRARY} SHARED ${SRC}/vector.c)
-set_target_properties(${VECTOR_LIBRARY} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER ${INCLUDE}/vector.h
-)
-
-add_library(${LINKED_LIST_LIBRARY} SHARED 
+add_library(${LIBRARY} SHARED 
+    ${SRC}/vector.c
     ${SRC}/single_linked_list.c
 )
-set_target_properties(${LINKED_LIST_LIBRARY} PROPERTIES
+set_target_properties(${LIBRARY} PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER ${INCLUDE}/single_linked_list.h
-)
-
-add_library(${TREE_LIBRARY} SHARED 
-    ${SRC}/binary_tree.c
-    ${SRC}/vector.c
-)
-set_target_properties(${TREE_LIBRARY} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER ${INCLUDE}/binary_tree.h
+    PUBLIC_HEADER ${INCLUDE}/*.h
 )
 
 ################################################
@@ -57,13 +38,7 @@ set_target_properties(${TREE_LIBRARY} PROPERTIES
 ################################################
 
 add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
-target_link_libraries(${VECTOR_EXAMPLE} ${VECTOR_LIBRARY})
+target_link_libraries(${VECTOR_EXAMPLE} ${LIBRARY})
 
 add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
-target_link_libraries(${LINKED_LIST_EXAMPLE} ${LINKED_LIST_LIBRARY})
-
-add_executable(${TREE_EXAMPLE} ${EXAMPLES}/binary_tree.c)
-target_link_libraries(${TREE_EXAMPLE} 
-    ${VECTOR_LIBRARY}
-    ${TREE_LIBRARY}
-)
+target_link_libraries(${LINKED_LIST_EXAMPLE} ${LIBRARY})

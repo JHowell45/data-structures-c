@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
 set(INCLUDE ${ROOT_DIR}/include)
 set(SRC ${ROOT_DIR}/src)
-set(EXAMPLES ${ROOT_DIR}/examples)
+# set(EXAMPLES ${ROOT_DIR}/examples)
 
 set(LIBRARY jacob-algos)
 
@@ -41,8 +41,8 @@ set_target_properties(${LIBRARY} PROPERTIES
 # Build the Executables:
 ################################################
 
-add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
-target_link_libraries(${VECTOR_EXAMPLE} ${LIBRARY})
+# add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
+# target_link_libraries(${VECTOR_EXAMPLE} ${LIBRARY})
 
-add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
-target_link_libraries(${LINKED_LIST_EXAMPLE} ${LIBRARY})
+# add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
+# target_link_libraries(${LINKED_LIST_EXAMPLE} ${LIBRARY})

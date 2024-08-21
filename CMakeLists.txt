@@ -7,17 +7,17 @@ project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-################################################
+####################################################################################
 # Set Variables:
-################################################
+####################################################################################
 
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
 file(GLOB SOURCES ${ROOT_DIR}/src/*.c)
 file(GLOB HEADERS ${ROOT_DIR}/include/*.h)
 
-################################################
+####################################################################################
 # Build the Libraries:
-################################################
+####################################################################################
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
@@ -28,15 +28,20 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
 #     PUBLIC_HEADER ${INCLUDE}/*.h
 # )
 
-################################################
-# Build the Executables:
-################################################
+####################################################################################
+#  Tests:
+####################################################################################
+# set(TESTS_DIR tests)
 
-# add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
-# target_link_libraries(${VECTOR_EXAMPLE} ${PROJECT_NAME})
+# add_executable(test_create_vector ${TESTS_DIR}/test_create_vector.c)
+# target_link_libraries(test_create_vector ${PROJECT_NAME})
 
-# add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
-# target_link_libraries(${LINKED_LIST_EXAMPLE} ${PROJECT_NAME})
+# enable_testing()
+
+# add_test(
+#     NAME test_create_vector
+#     COMMAND test_create_vector
+# )
 
 ####################################################################################
 #  Installation:

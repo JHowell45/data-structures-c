@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(data-structures VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types and structures written in C")
+set(PROJECT_NAME jacob-algos)
+project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types and structures written in C")
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -11,38 +12,44 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 ################################################
 
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/data-structures)
-set(INCLUDE ${ROOT_DIR}/include)
-set(SRC ${ROOT_DIR}/src)
-# set(EXAMPLES ${ROOT_DIR}/examples)
-
-set(LIBRARY jacob-algos)
-
-set(VECTOR_EXAMPLE vector_example)
-set(LINKED_LIST_EXAMPLE lists_example)
-set(TREE_EXAMPLE trees_example)
+file(GLOB SOURCES ${ROOT_DIR}/src/*.c)
+file(GLOB HEADERS ${ROOT_DIR}/include/*.h)
 
 ################################################
 # Build the Libraries:
 ################################################
 
-include_directories(${INCLUDE})
+add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
 
-add_library(${LIBRARY} SHARED 
-    ${SRC}/vector.c
-    ${SRC}/single_linked_list.c
-)
-set_target_properties(${LIBRARY} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER ${INCLUDE}/*.h
-)
+# set_target_properties(${PROJECT_NAME} PROPERTIES
+#     VERSION ${PROJECT_VERSION}
+#     SOVERSION ${PROJECT_VERSION_MAJOR}
+#     PUBLIC_HEADER ${INCLUDE}/*.h
+# )
 
 ################################################
 # Build the Executables:
 ################################################
 
 # add_executable(${VECTOR_EXAMPLE} ${EXAMPLES}/vector.c)
-# target_link_libraries(${VECTOR_EXAMPLE} ${LIBRARY})
+# target_link_libraries(${VECTOR_EXAMPLE} ${PROJECT_NAME})
 
 # add_executable(${LINKED_LIST_EXAMPLE} ${EXAMPLES}/single_linked_list.c)
-# target_link_libraries(${LINKED_LIST_EXAMPLE} ${LIBRARY})
+# target_link_libraries(${LINKED_LIST_EXAMPLE} ${PROJECT_NAME})
+
+####################################################################################
+#  Installation:
+####################################################################################
+if (NOT DEFINED ENV{CUSTOM_C_LIBRARY_DEST})
+    message(FATAL_ERROR "Please set the CUSTOM_C_LIBRARY_DEST environment variable!")
+endif()
+
+set(LIBRARY_DEST $ENV{CUSTOM_C_LIBRARY_DEST}/${PROJECT_NAME})
+
+message("\n############################################# SETUP #############################################\n")
+message(LIBRARY_DEST: ${LIBRARY_DEST})
+message("\n#################################################################################################\n")
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${LIBRARY_DEST}/lib)
+install(FILES ${HEADERS} DESTINATION ${LIBRARY_DEST}/include)

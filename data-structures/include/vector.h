@@ -5,9 +5,9 @@
 #include <stddef.h>
 
 typedef struct {
-  size_t capacity;
-  size_t size;
-  int* items;
+    size_t capacity;
+    size_t size;
+    int* items;
 } vector_t;
 
 vector_t* new_vector(void);

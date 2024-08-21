@@ -1,33 +1,35 @@
 #include <stdio.h>
+
 #include "single_linked_list.h"
 
-int main(void) {
-    LinkedList *root = newSingleLinkedList(0);
-    printSingleLinkedList(root);
+int
+main(void) {
+  linked_list_t* root = new_single_linked_list(0);
+  print_single_linked_list(root);
 
-    for (int i = 1; i <= 10; i++) {
-        pushSingleLinkedList(root, i);
-        printSingleLinkedList(root);
-    }
+  for (int i = 1; i <= 10; i++) {
+    push_single_linked_list(root, i);
+    print_single_linked_list(root);
+  }
 
-    insertSingleLinkedList(root, 1000, 4);
-    printSingleLinkedList(root);
+  insert_single_linked_list(root, 1000, 4);
+  print_single_linked_list(root);
 
-    removeSingleLinkedList(root, 5);
-    printSingleLinkedList(root);
+  remove_single_linked_list(root, 5);
+  print_single_linked_list(root);
 
-    size_t superLargeValue = 1000;
-    for (int i = 0; i <= superLargeValue; i++) {
-        insertSingleLinkedList(root, 2*i, 6);
-    }
+  size_t superLargeValue = 1000;
+  for (int i = 0; i <= superLargeValue; i++) {
+    insert_single_linked_list(root, 2 * i, 6);
+  }
 
-    LinkedList *search = getNodeSingleLinkedList(root, 10);
-    if (search == NULL) {
-        printf("NOT FOUND\n");
-    } else {
-        printSingleLinkedList(search);
-    }
+  linked_list_t* search = getNode_single_linked_list(root, 10);
+  if (search == NULL) {
+    printf("NOT FOUND\n");
+  } else {
+    print_single_linked_list(search);
+  }
 
-    freeSingleLinkedList(root);
-    return 0;
+  free_single_linked_list(root);
+  return 0;
 }

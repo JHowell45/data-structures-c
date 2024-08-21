@@ -20,16 +20,16 @@ free_single_linked_list(linked_list_t* ll) {
 }
 
 void
-push_single_linked_list(linked_list_t* ll, int data) {
+single_linked_list_push(linked_list_t* ll, int data) {
     if (ll->next != NULL) {
-        push_single_linked_list(ll->next, data);
+        single_linked_list_push(ll->next, data);
     } else {
         ll->next = new_single_linked_list(data);
     }
 }
 
 void
-insert_single_linked_list(linked_list_t* ll, int data, size_t index) {
+single_linked_list_insert(linked_list_t* ll, int data, size_t index) {
     size_t current = 0;
     linked_list_t* temp = ll;
 
@@ -43,10 +43,10 @@ insert_single_linked_list(linked_list_t* ll, int data, size_t index) {
 }
 
 void
-pop_single_linked_list(linked_list_t* ll) {}
+single_linked_list_pop(linked_list_t* ll) {}
 
 void
-remove_single_linked_list(linked_list_t* ll, size_t index) {
+single_linked_list_remove(linked_list_t* ll, size_t index) {
     size_t current = 0;
     linked_list_t* temp = ll;
     while (current < index - 1) {
@@ -58,6 +58,18 @@ remove_single_linked_list(linked_list_t* ll, size_t index) {
     free(toFree);
 }
 
+linked_list_t*
+single_linked_list_get_node(linked_list_t* ll, int searchValue) {
+    linked_list_t* temp = ll;
+    while (temp != NULL) {
+        if (temp->data == searchValue) {
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return NULL;
+}
+
 void
 print_single_linked_list(linked_list_t* ll) {
     printf("(%d)", ll->data);
@@ -67,16 +79,4 @@ print_single_linked_list(linked_list_t* ll) {
     } else {
         printf("\n");
     }
-}
-
-linked_list_t*
-getNode_single_linked_list(linked_list_t* ll, int searchValue) {
-    linked_list_t* temp = ll;
-    while (temp != NULL) {
-        if (temp->data == searchValue) {
-            return temp;
-        }
-        temp = temp->next;
-    }
-    return NULL;
 }

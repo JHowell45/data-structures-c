@@ -20,6 +20,17 @@ free_single_linked_list(linked_list_t* ll) {
 }
 
 void
+print_single_linked_list(linked_list_t* ll) {
+    printf("(%d)", ll->data);
+    if (ll->next != NULL) {
+        printf("->");
+        print_single_linked_list(ll->next);
+    } else {
+        printf("\n");
+    }
+}
+
+void
 single_linked_list_push(linked_list_t* ll, int data) {
     if (ll->next != NULL) {
         single_linked_list_push(ll->next, data);
@@ -68,15 +79,4 @@ single_linked_list_get_node(linked_list_t* ll, int searchValue) {
         temp = temp->next;
     }
     return NULL;
-}
-
-void
-print_single_linked_list(linked_list_t* ll) {
-    printf("(%d)", ll->data);
-    if (ll->next != NULL) {
-        printf("->");
-        print_single_linked_list(ll->next);
-    } else {
-        printf("\n");
-    }
 }

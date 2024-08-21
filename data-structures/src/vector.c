@@ -21,64 +21,6 @@ free_vector(vector_t* vector) {
 }
 
 void
-increase_internal_array_size_check(vector_t* vector) {
-    if (vector->size > vector->capacity) {
-        vector->capacity *= 2;
-        vector->items = realloc(vector->items, sizeof(int) * vector->capacity);
-    }
-}
-
-void
-push_vector(vector_t* vector, int value) {
-    vector->size++;
-    increase_internal_array_size_check(vector);
-    vector->items[vector->size - 1] = value;
-}
-
-void
-insert_vector(vector_t* vector, int value, size_t index) {
-    vector->size++;
-    increase_internal_array_size_check(vector);
-    for (int i = vector->size - 1; i >= index; i--) {
-        vector->items[i + 1] = vector->items[i];
-    }
-    vector->items[index] = value;
-}
-
-void
-pop_vector(vector_t* vector) {
-    vector->size--;
-}
-
-void
-remove_vector(vector_t* vector, size_t index) {
-    for (int i = index + 1; i < vector->size; i++) {
-        vector->items[i - 1] = vector->items[i];
-    }
-    vector->size--;
-}
-
-void
-clear_vector(vector_t* vector) {
-    vector->size = 0;
-}
-
-int
-index_of_vector(vector_t* vector, int search) {
-    for (int i = 0; i < vector->size; i++) {
-        if (vector->items[i] == search) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-bool
-is_empty_vector(vector_t* vector) {
-    return vector->size == 0;
-}
-
-void
 print_vector(vector_t* vector) {
     printf("[");
     for (int i = 0; i < vector->size; i++) {
@@ -102,8 +44,66 @@ print_verbose_vector(vector_t* vector) {
     printf("}\n");
 }
 
+static void
+increase_internal_array_size_check(vector_t* vector) {
+    if (vector->size > vector->capacity) {
+        vector->capacity *= 2;
+        vector->items = realloc(vector->items, sizeof(int) * vector->capacity);
+    }
+}
+
 void
-selection_sort_vector(vector_t* vector, bool desc) {
+vector_push(vector_t* vector, int value) {
+    vector->size++;
+    increase_internal_array_size_check(vector);
+    vector->items[vector->size - 1] = value;
+}
+
+void
+vector_insert(vector_t* vector, int value, size_t index) {
+    vector->size++;
+    increase_internal_array_size_check(vector);
+    for (int i = vector->size - 1; i >= index; i--) {
+        vector->items[i + 1] = vector->items[i];
+    }
+    vector->items[index] = value;
+}
+
+void
+vector_pop(vector_t* vector) {
+    vector->size--;
+}
+
+void
+vector_remove(vector_t* vector, size_t index) {
+    for (int i = index + 1; i < vector->size; i++) {
+        vector->items[i - 1] = vector->items[i];
+    }
+    vector->size--;
+}
+
+void
+vector_clear(vector_t* vector) {
+    vector->size = 0;
+}
+
+int
+vector_index_of(vector_t* vector, int search) {
+    for (int i = 0; i < vector->size; i++) {
+        if (vector->items[i] == search) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+bool
+vector_is_empty(vector_t* vector) {
+    return vector->size == 0;
+}
+
+void
+vector_selection_sort(vector_t* vector, bool desc) {
     for (int firstIndex = 0; firstIndex < vector->size - 1; firstIndex++) {
         int first = vector->items[firstIndex];
         int second = vector->items[firstIndex];
@@ -129,7 +129,7 @@ selection_sort_vector(vector_t* vector, bool desc) {
     }
 }
 
-void
+static void
 swap_index_with_next(vector_t* v, size_t itemIndex) {
     int temp = v->items[itemIndex + 1];
     v->items[itemIndex + 1] = v->items[itemIndex];
@@ -138,7 +138,7 @@ swap_index_with_next(vector_t* v, size_t itemIndex) {
 }
 
 void
-bubble_sort_vector(vector_t* vector, bool desc) {
+vector_bubble_sort(vector_t* vector, bool desc) {
     size_t swaps = 1;
     while (swaps != 0) {
         swaps = 0;
@@ -159,7 +159,7 @@ bubble_sort_vector(vector_t* vector, bool desc) {
 }
 
 void
-insertion_sort_vector(vector_t* vector, bool desc) {
+vector_insertion_sort(vector_t* vector, bool desc) {
     for (int i = 0; i < vector->size; i++) {
         int first = vector->items[i];
         int second = vector->items[i + 1];

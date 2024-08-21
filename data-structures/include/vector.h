@@ -5,37 +5,37 @@
 #include <stddef.h>
 
 typedef struct {
-    size_t capacity;
-    size_t size;
-    int *items;
-} vector;
+  size_t capacity;
+  size_t size;
+  int* items;
+} vector_t;
 
-vector * newVector(void);
+vector_t* new_vector(void);
 
-void freeVector(vector *vector);
+void free_vector(vector_t* vector);
 
-void pushVector(vector *vector, int value);
+void push_vector(vector_t* vector, int value);
 
-void insertVector(vector *vector, int value, size_t index);
+void insert_vector(vector_t* vector, int value, size_t index);
 
-void popVector(vector *vector);
+void pop_vector(vector_t* vector);
 
-void removeVector(vector *vector, size_t index);
+void remove_vector(vector_t* vector, size_t index);
 
-void clearVector(vector *vector);
+void clear_vector(vector_t* vector);
 
-int indexOfVector(vector *vector, int search);
+int index_of_vector(vector_t* vector, int search);
 
-bool isEmptyVector(vector *vector);
+bool is_empty_vector(vector_t* vector);
 
-void printVector(vector *vector);
+void print_vector(vector_t* vector);
 
-void printVerboseVector(vector *vector);
+void print_verbose_vector(vector_t* vector);
 
-void selectionSortVector(vector *vector, bool desc);
+void selection_sort_vector(vector_t* vector, bool desc);
 
-void bubbleSortVector(vector *vector, bool desc);
+void bubble_sort_vector(vector_t* vector, bool desc);
 
-void insertionSortVector(vector *vector, bool desc);
+void insertion_sort_vector(vector_t* vector, bool desc);
 
 #endif

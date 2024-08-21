@@ -3,9 +3,9 @@
 
 #include <stddef.h>
 
-typedef struct {
-  int data;
-  struct linked_list_t* next;
+typedef struct linked_list {
+    int data;
+    struct linked_list* next;
 } linked_list_t;
 
 linked_list_t* new_single_linked_list(int data);

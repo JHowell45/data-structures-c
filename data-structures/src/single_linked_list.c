@@ -85,10 +85,13 @@ single_linked_list_node_get_node(linked_list_node_t* ll, int searchValue) {
 single_linked_list_t*
 new_single_linked_list(void) {
     single_linked_list_t* list = malloc(sizeof(single_linked_list_t));
-    list->head = NULL;
-    list->tail = NULL;
-    list->length = 0;
-    return list;
+    if (list != NULL) {
+        list->head = NULL;
+        list->tail = NULL;
+        list->length = 0;
+        return list;
+    }
+    return NULL;
 }
 
 void

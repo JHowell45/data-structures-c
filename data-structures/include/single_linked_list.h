@@ -26,7 +26,17 @@ typedef struct single_linked_list {
 } single_linked_list_t;
 
 single_linked_list_t* new_single_linked_list(void);
-
 void free_single_linked_list(single_linked_list_t* list);
+
+void single_linked_list_is_empty(single_linked_list_t* list);
+linked_list_node_t* single_linked_list_first(single_linked_list_t* list);
+linked_list_node_t* single_linked_list_last(single_linked_list_t* list);
+linked_list_node_t* single_linked_list_get(single_linked_list_t* list, size_t index);
+void single_linked_list_add_first(single_linked_list_t* list, linked_list_node_t* node);
+void single_linked_list_add_last(single_linked_list_t* list, linked_list_node_t* node);
+void single_linked_list_insert(single_linked_list_t* list, linked_list_node_t* node, size_t index);
+void single_linked_list_remove_first(single_linked_list_t* list);
+void single_linked_list_remove_last(single_linked_list_t* list);
+void single_linked_list_remove(single_linked_list_t* list, size_t index);
 
 #endif

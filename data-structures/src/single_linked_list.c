@@ -88,7 +88,7 @@ new_single_linked_list(void) {
     if (list != NULL) {
         list->head = NULL;
         list->tail = NULL;
-        list->length = 0;
+        list->size = 0;
         return list;
     }
     return NULL;

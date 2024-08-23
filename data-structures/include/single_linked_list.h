@@ -22,12 +22,13 @@ linked_list_node_t* single_linked_list_node_get_node(linked_list_node_t* ll, int
 typedef struct single_linked_list {
     linked_list_node_t* head;
     linked_list_node_t* tail;
-    size_t length;
+    size_t size;
 } single_linked_list_t;
 
 single_linked_list_t* new_single_linked_list(void);
 void free_single_linked_list(single_linked_list_t* list);
 
+size_t single_linked_list_size(single_linked_list_t* list);
 void single_linked_list_is_empty(single_linked_list_t* list);
 linked_list_node_t* single_linked_list_first(single_linked_list_t* list);
 linked_list_node_t* single_linked_list_last(single_linked_list_t* list);

@@ -80,3 +80,19 @@ single_linked_list_node_get_node(linked_list_node_t* ll, int searchValue) {
     }
     return NULL;
 }
+
+// Linked List:
+single_linked_list_t*
+new_single_linked_list(void) {
+    single_linked_list_t* list = malloc(sizeof(single_linked_list_t));
+    list->head = NULL;
+    list->tail = NULL;
+    list->length = 0;
+    return list;
+}
+
+void
+free_single_linked_list(single_linked_list_t* list) {
+    free_single_linked_list_node(list->head);
+    free(list);
+}

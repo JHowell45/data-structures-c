@@ -121,7 +121,16 @@ single_linked_list_last(single_linked_list_t* list) {
 }
 
 linked_list_node_t*
-single_linked_list_get(single_linked_list_t* list, size_t index) {}
+single_linked_list_get(single_linked_list_t* list, size_t index) {
+    if (index >= list->size) {
+        return NULL;
+    }
+    linked_list_node_t* node = list->head;
+    for (int i = 0; i < index; i++) {
+        node = node->next;
+    }
+    return node;
+}
 
 void
 single_linked_list_add_first(single_linked_list_t* list, linked_list_node_t* node) {}

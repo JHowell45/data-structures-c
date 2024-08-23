@@ -133,10 +133,23 @@ single_linked_list_get(single_linked_list_t* list, size_t index) {
 }
 
 void
-single_linked_list_add_first(single_linked_list_t* list, linked_list_node_t* node) {}
+single_linked_list_add_first(single_linked_list_t* list, linked_list_node_t* node) {
+    if (list->head == NULL) {
+        list->head = node;
+        list->tail = node;
+    } else {
+        node->next = list->head;
+        list->head = node;
+    }
+}
 
 void
-single_linked_list_add_last(single_linked_list_t* list, linked_list_node_t* node) {}
+single_linked_list_add_last(single_linked_list_t* list, linked_list_node_t* node) {
+    if (list->tail == NULL && list->head == NULL) {
+        single_linked_list_add_first(list, node);
+    } else {
+    }
+}
 
 void
 single_linked_list_insert(single_linked_list_t* list, linked_list_node_t* node, size_t index) {}

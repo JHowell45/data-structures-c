@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.30)
 
 set(PROJECT_NAME jacob-algos)
 project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types and structures written in C")
@@ -6,12 +6,6 @@ project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG        b514bdc898e2951020cbdca1304b75f5950d1f59 # release-1.15.2
-)
 
 ####################################################################################
 # Set Variables:

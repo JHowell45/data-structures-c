@@ -29,7 +29,7 @@ single_linked_list_t* new_single_linked_list(void);
 void free_single_linked_list(single_linked_list_t* list);
 
 size_t single_linked_list_size(single_linked_list_t* list);
-void single_linked_list_is_empty(single_linked_list_t* list);
+int single_linked_list_is_empty(single_linked_list_t* list);
 linked_list_node_t* single_linked_list_first(single_linked_list_t* list);
 linked_list_node_t* single_linked_list_last(single_linked_list_t* list);
 linked_list_node_t* single_linked_list_get(single_linked_list_t* list, size_t index);

@@ -7,6 +7,12 @@ project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG        b514bdc898e2951020cbdca1304b75f5950d1f59 # release-1.15.2
+)
+
 ####################################################################################
 # Set Variables:
 ####################################################################################
@@ -31,17 +37,17 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
 ####################################################################################
 #  Tests:
 ####################################################################################
-# set(TESTS_DIR tests)
+set(TESTS_DIR tests)
 
-# add_executable(test_create_vector ${TESTS_DIR}/test_create_vector.c)
-# target_link_libraries(test_create_vector ${PROJECT_NAME})
+add_executable(test_create_vector ${TESTS_DIR}/test_create_vector.c)
+target_link_libraries(test_create_vector ${PROJECT_NAME})
 
-# enable_testing()
+enable_testing()
 
-# add_test(
-#     NAME test_create_vector
-#     COMMAND test_create_vector
-# )
+add_test(
+    NAME test_create_vector
+    COMMAND test_create_vector
+)
 
 ####################################################################################
 #  Installation:

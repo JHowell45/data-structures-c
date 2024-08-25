@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
+extern "C" {
 #include "single_linked_list.h"
+}
 
 class SingleLinkedListTest : public testing::Test {
   protected:

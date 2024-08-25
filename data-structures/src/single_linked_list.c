@@ -105,7 +105,7 @@ single_linked_list_size(single_linked_list_t* list) {
     return list->size;
 }
 
-void
+int
 single_linked_list_is_empty(single_linked_list_t* list) {
     return list->head == NULL;
 }

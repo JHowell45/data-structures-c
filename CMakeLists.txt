@@ -47,7 +47,7 @@ FetchContent_MakeAvailable(googletest)
 ####################################################################################
 set(TESTS_DIR tests)
 
-add_executable(test_single_linked_lists ${TESTS_DIR}/single_linked_lists.c)
+add_executable(test_single_linked_lists ${TESTS_DIR}/single_linked_lists.cpp)
 target_link_libraries(test_single_linked_lists 
     ${PROJECT_NAME}
     GTest::gtest_main

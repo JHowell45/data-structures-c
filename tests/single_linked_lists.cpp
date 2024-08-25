@@ -19,10 +19,8 @@ class SingleLinkedListTest : public testing::Test {
     }
 };
 
-// Demonstrate some basic assertions.
 TEST_F(SingleLinkedListTest, test_root) { EXPECT_EQ(list->data, 0); }
 
-// Demonstrate some basic assertions.
 TEST_F(SingleLinkedListTest, test_push) {
     single_linked_list_node_push(list, 1);
     EXPECT_EQ(list->next->data, 1);

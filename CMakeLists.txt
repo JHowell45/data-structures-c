@@ -28,20 +28,35 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
 #     PUBLIC_HEADER ${INCLUDE}/*.h
 # )
 
+
+####################################################################################
+# Install Test Framework:
+####################################################################################
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG        b514bdc898e2951020cbdca1304b75f5950d1f59 # release-1.15.2
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 ####################################################################################
 #  Tests:
 ####################################################################################
 set(TESTS_DIR tests)
 
-add_executable(test_create_vector ${TESTS_DIR}/test_create_vector.c)
-target_link_libraries(test_create_vector ${PROJECT_NAME})
+add_executable(test_single_linked_lists ${TESTS_DIR}/single_linked_lists.c)
+target_link_libraries(test_single_linked_lists 
+    ${PROJECT_NAME}
+    GTest::gtest_main
+)
 
 enable_testing()
 
-add_test(
-    NAME test_create_vector
-    COMMAND test_create_vector
-)
+include(GoogleTest)
+gtest_discover_tests(test_single_linked_lists)
 
 ####################################################################################
 #  Installation:

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 
 set(PROJECT_NAME jacob-algos)
-project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C DESCRIPTION "Custom data types and structures written in C")
+project(${PROJECT_NAME} VERSION 0.1.0 LANGUAGES C CXX DESCRIPTION "Custom data types and structures written in C")
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)

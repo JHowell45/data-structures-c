@@ -19,7 +19,7 @@ file(GLOB HEADERS ${ROOT_DIR}/include/*.h)
 # Build the Libraries:
 ####################################################################################
 
-add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_NAME} PUBLIC ${ROOT_DIR}/include)
 
 # set_target_properties(${PROJECT_NAME} PROPERTIES

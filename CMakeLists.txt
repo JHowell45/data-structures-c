@@ -61,15 +61,15 @@ gtest_discover_tests(test_single_linked_lists)
 ####################################################################################
 #  Installation:
 ####################################################################################
-if (NOT DEFINED ENV{CUSTOM_C_LIBRARY_DEST})
-    message(FATAL_ERROR "Please set the CUSTOM_C_LIBRARY_DEST environment variable!")
-endif()
+# if (NOT DEFINED ENV{CUSTOM_C_LIBRARY_DEST})
+#     message(FATAL_ERROR "Please set the CUSTOM_C_LIBRARY_DEST environment variable!")
+# endif()
 
-set(LIBRARY_DEST $ENV{CUSTOM_C_LIBRARY_DEST}/${PROJECT_NAME})
+# set(LIBRARY_DEST $ENV{CUSTOM_C_LIBRARY_DEST}/${PROJECT_NAME})
 
-message("\n############################################# SETUP #############################################\n")
-message(LIBRARY_DEST: ${LIBRARY_DEST})
-message("\n#################################################################################################\n")
+# message("\n############################################# SETUP #############################################\n")
+# message(LIBRARY_DEST: ${LIBRARY_DEST})
+# message("\n#################################################################################################\n")
 
-install(TARGETS ${PROJECT_NAME} DESTINATION ${LIBRARY_DEST}/lib)
-install(FILES ${HEADERS} DESTINATION ${LIBRARY_DEST}/include)
+# install(TARGETS ${PROJECT_NAME} DESTINATION ${LIBRARY_DEST}/lib)
+# install(FILES ${HEADERS} DESTINATION ${LIBRARY_DEST}/include)
